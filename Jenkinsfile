@@ -2,7 +2,7 @@
 
 pipeline {
   agent {
-        label 'baremetal'
+        label 'ubuntu'
   }
   options {
 	timestamps()
@@ -28,7 +28,7 @@ pipeline {
                 export PATH=$HOME/.local/bin:$PATH
                 yamllint -f colored --no-warnings ${WORKSPACE}
                 ansible-lint --exclude "molecule" --force-color -x 106 ${WORKSPACE}
-		ln -sf $HOME/.local/bin/ansible-playbook /usr/local/bin/ansible-playbook
+		sudo ln -sf $HOME/.local/bin/ansible-playbook /usr/local/bin/ansible-playbook
                 '''
                 }
         }
