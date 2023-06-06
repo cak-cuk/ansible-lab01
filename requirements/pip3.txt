@@ -1,0 +1,6 @@
+ansible
+ansible-lint
+dnspython
+molecule
+molecule-docker
+yamllint
