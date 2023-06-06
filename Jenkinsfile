@@ -2,7 +2,7 @@
 
 pipeline {
   agent {
-        label 'ubuntu2204'
+        label 'baremetal'
   }
   options {
 	timestamps()
