@@ -7,8 +7,8 @@ bind_zones:
     allow_update:
       - "key rndc-key"
     name_servers:
-      - dns-01-lab.dns.lab
-      - dns-02-lab.dns.lab
+      - dns-01-lab.dns.lab.
+      - dns-02-lab.dns.lab.
     hosts:
       - name: dns-01-lab
         ip: 10.85.202.120
