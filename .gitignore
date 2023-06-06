@@ -341,3 +341,6 @@ staticfiles/*
 static/*
 config/settings/local.py
 *.sqlite
+
+# Ansible vault
+.vault_pass

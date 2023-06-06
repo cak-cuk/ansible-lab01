@@ -36,13 +36,13 @@ pipeline {
         stage("Simulate the playbook") {
             when { expression { env.GIT_BRANCH != 'origin/main' } }
             steps {
-                sh 'echo "do whatever"'
+                ansiblePlaybook colorized: true, credentialsId: 'Global-SSH-RSA', disableHostKeyChecking: true, extras: '-C -D', inventory: 'inventory.yaml', playbook: 'playbook.yaml', vaultCredentialsId: 'Global-Ansible-Vault' 
                 }
         }
         stage("Run the playbook") {
             when { expression { env.GIT_BRANCH == 'origin/main' } }
             steps {
-                sh 'echo "do whatever"'
+               ansiblePlaybook colorized: true, credentialsId: 'Global-SSH-RSA', disableHostKeyChecking: true, inventory: 'inventory.yaml', playbook: 'playbook.yaml', vaultCredentialsId: 'Global-Ansible-Vault' 
                 }
         }
     } // EOL stages

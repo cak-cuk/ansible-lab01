@@ -1,0 +1,5 @@
+---
+bind_zones:
+  - name: dns.lab
+    primaries:
+      - 10.85.202.120

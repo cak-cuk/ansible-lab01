@@ -1,0 +1,15 @@
+---
+- name: Execute prequities
+  hosts: all
+  become: true
+  tasks:
+    - name: Import package task
+      ansible.builtin.import_tasks:
+        file: tasks/init.yaml
+
+- name: Converge
+  hosts: all
+  gather_facts: true
+  become: true
+  roles:
+    - udienz.bind

@@ -1,0 +1,16 @@
+---
+bind_zones:
+  - name: dns.lab
+    primaries:
+      - 10.85.202.120
+    type: primary
+    allow_update:
+      - "key rndc-key"
+    name_servers:
+      - dns-01-lab.dns.lab
+      - dns-02-lab.dns.lab
+    hosts:
+      - name: dns-01-lab
+        ip: 10.85.202.120
+      - name: dns-02-lab
+        ip: 10.85.202.121

@@ -1,0 +1,7 @@
+---
+dns_lab01:
+  hosts:
+    dns-01-lab:
+      ansible_host: 10.85.202.120
+    dns-02-lab:
+      ansible_host: 10.85.202.121
