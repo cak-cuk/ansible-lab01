@@ -79,8 +79,8 @@ bind_zone_time_to_retry: 2400
 bind_zone_time_to_expire: 604800
 
 bind_default_zone_files:
-  - "{{ bind_conf_dir }}"/named.conf.default-zones
-  - "{{ bind_conf_dir }}"/zones.rfc1918
+  - "{{ bind_conf_dir }}/named.conf.default-zones"
+  - "{{ bind_conf_dir }}/zones.rfc1918"
 
 bind_acls:
 - name: dns_servers
