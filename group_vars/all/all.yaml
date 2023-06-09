@@ -1,0 +1,91 @@
+---
+rhbase_firewall_allow_services:
+  - dns
+bind_allow_query: ['any']
+
+bind_allow_recursion:
+  - '10.0.0.0/8'
+  - '172.16.0.0/12'
+  - '192.168.0.0/16'
+  - '100.64.0.0/10'
+
+bind_listen_ipv4:
+  - any
+bind_listen_ipv6:
+  - none
+
+# bind_allow_transfer:
+#  - "172.1.22.12/32"
+bind_forwarders:
+  - "1.1.1.1"
+  - "8.8.8.8"
+  - "9.9.9.9"
+bind_recursion: true
+bind_zone_dir: "/var/named/zones"
+bind_secondary_dir: "{{ bind_dir }}/slaves"
+bind_dnssec_enable: false
+bind_dnssec_validation: false
+bind_query_log: "/var/log/{{ bind_service }}/query.log"
+bind_other_logs:
+  - name: default
+    file: "/var/log/{{ bind_service }}/default.log"
+    versions: 0
+    size: "10m"
+  - name: client
+    file: "/var/log/{{ bind_service }}/client.log"
+    versions: 0
+    size: "10m"
+  - name: config
+    file: "/var/log/{{ bind_service }}/config.log"
+    versions: 0
+    size: "10m"
+  - name: general
+    file: "/var/log/{{ bind_service }}/general.log"
+    versions: 0
+    size: "10m"
+  - name: notify
+    file: "/var/log/{{ bind_service }}/notify.log"
+    versions: 0
+    size: "10m"
+  - name: resolver
+    file: "/var/log/{{ bind_service }}/resolver.log"
+    versions: 0
+    size: "10m"
+  - name: security
+    file: "/var/log/{{ bind_service }}/security.log"
+    versions: 0
+    size: "10m"
+  - name: update-security
+    file: "/var/log/{{ bind_service }}/update-security.log"
+    versions: 0
+    size: "10m"
+  - name: update
+    file: "/var/log/{{ bind_service }}/update.log"
+    versions: 0
+    size: "10m"
+  - name: xfer-in
+    file: "/var/log/{{ bind_service }}/xfer-in.log"
+    versions: 0
+    size: "10m"
+  - name: xfer-out
+    file: "/var/log/{{ bind_service }}/xfer-out.log"
+    versions: 0
+    size: "10m"
+
+bind_zone_ttl: 360
+bind_zone_minimum_ttl: 3600
+bind_zone_time_to_refresh: 10800
+bind_zone_time_to_retry: 2400
+bind_zone_time_to_expire: 604800
+
+bind_default_zone_files:
+  - "{{ bind_conf_dir }}"/named.conf.default-zones
+  - "{{ bind_conf_dir }}"/zones.rfc1918
+
+bind_acls:
+- name: dns_servers
+  match_list:
+    - 10.85.202.120
+    - 10.85.202.121
+    - 127.0.0.1
+bind_key_mapping: {}
