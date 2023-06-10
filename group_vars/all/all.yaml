@@ -21,6 +21,7 @@ bind_forwarders:
   - "8.8.8.8"
   - "9.9.9.9"
 bind_recursion: true
+bind_conf_dir: /etc/bind
 bind_zone_dir: "/var/named/zones"
 bind_secondary_dir: "{{ bind_dir }}/slaves"
 bind_dnssec_enable: false
