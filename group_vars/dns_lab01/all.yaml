@@ -94,6 +94,6 @@ auth_file: auth_transfer.conf
 bind_auth_file: "{{ bind_conf_dir }}/{{ auth_file }}"
 
 bind_dns_keys:
-  - name: "jenkins-key."
+  - name: "tsig-key."
     algorithm: hmac-sha256
     secret: "Yfr4AfgMgfDS1BUf4dpbua2hSea99spQVnnbvAJfL5g="
