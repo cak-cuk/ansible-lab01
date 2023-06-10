@@ -8,7 +8,6 @@
     params:
       files:
         - all.yaml
-        - default.yaml
         - '{{ ansible_distribution }}.yaml'
       paths:
         - '../group_vars'
