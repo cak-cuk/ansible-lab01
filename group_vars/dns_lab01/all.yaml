@@ -93,7 +93,7 @@ bind_acls:
 auth_file: auth_transfer.conf
 bind_auth_file: "{{ bind_conf_dir }}/{{ auth_file }}"
 bind_extra_include_files:
-  - "{{ auth_file }}"
+  - "{{ bind_auth_file }}"
 
 bind_dns_keys:
   - name: "jenkins-key"
