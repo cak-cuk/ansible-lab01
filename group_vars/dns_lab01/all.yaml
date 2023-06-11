@@ -99,9 +99,6 @@ bind_key_mapping:
   - "dnslab01"
 
 bind_dns_keys:
-  - name: "jenkins-key"
-    algorithm: "hmac-sha256"
-    secret: "JruzzuScla1uOVbMrpzR+Edx+H7XZdcTSbEm1p3J6m0="
   - name: "dnslab01"
     algorithm: "hmac-sha256"
     secret: "dHAy/Xx+ML4PVhefW0Kfvh6osoA8/+KclCKaz5lYYBk="
