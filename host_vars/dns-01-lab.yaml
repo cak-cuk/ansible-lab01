@@ -6,6 +6,8 @@ bind_zones:
     type: primary
     allow_update:
       - "key rndc-key"
+      - "key dnslab01"
+      - "key jenkins-key"
     name_servers:
       - dns-01-lab.dns.lab.
       - dns-02-lab.dns.lab.
@@ -14,3 +16,6 @@ bind_zones:
         ip: 10.85.202.120
       - name: dns-02-lab
         ip: 10.85.202.121
+  - name: dns1.lab
+    primaries:
+      - 10.85.202.121
