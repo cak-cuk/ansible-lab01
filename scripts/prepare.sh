@@ -1,6 +1,5 @@
 #!/bin/bash
 
-set -x
 . ${WORKSPACE}/scripts/common.sh
 source /home/jenkins/.bashrc
 export PATH=$HOME/.local/bin:$PATH
