@@ -1,6 +1,6 @@
 ---
 bind_zones:
-  - name: dns.lab
+  - name: dns1.lab
     primaries:
       - 10.85.202.120
     type: primary
@@ -9,13 +9,13 @@ bind_zones:
       - "key dnslab01"
       - "key jenkins-key"
     name_servers:
-      - dns-01-lab.dns.lab.
-      - dns-02-lab.dns.lab.
+      - dns-01-lab.dns1.lab.
+      - dns-02-lab.dns1.lab.
     hosts:
       - name: dns-01-lab
         ip: 10.85.202.120
       - name: dns-02-lab
         ip: 10.85.202.121
-  - name: dns1.lab
+  - name: dns2.lab
     primaries:
       - 10.85.202.121
