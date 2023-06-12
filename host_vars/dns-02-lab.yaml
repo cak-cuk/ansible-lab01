@@ -1,5 +1,23 @@
 ---
 bind_zones:
-  - name: dns.lab
+  - name: 202.85.10.in-addr.arpa
     primaries:
       - 10.85.202.120
+  - name: dns1.lab
+    primaries:
+      - 10.85.202.120
+  - name: dns2.lab
+    primaries:
+      - 10.85.202.121
+    type: primary
+    allow_update:
+      - "key rndc-key"
+      - "key dnslab01"
+    name_servers:
+      - dns-01-lab.dns2.lab.
+      - dns-02-lab.dns2.lab.
+    hosts:
+      - name: dns-01-lab
+        ip: 10.85.202.120
+      - name: dns-02-lab
+        ip: 10.85.202.121

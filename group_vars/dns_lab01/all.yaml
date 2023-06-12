@@ -94,11 +94,11 @@ auth_file: auth_transfer.conf
 bind_auth_file: "{{ bind_conf_dir }}/{{ auth_file }}"
 bind_extra_include_files:
   - "{{ bind_auth_file }}"
+bind_key_mapping:
+  - "jenkins-key"
+  - "dnslab01"
 
 bind_dns_keys:
-  - name: "jenkins-key"
-    algorithm: "hmac-sha256"
-    secret: "JruzzuScla1uOVbMrpzR+Edx+H7XZdcTSbEm1p3J6m0="
   - name: "dnslab01"
     algorithm: "hmac-sha256"
     secret: "dHAy/Xx+ML4PVhefW0Kfvh6osoA8/+KclCKaz5lYYBk="
