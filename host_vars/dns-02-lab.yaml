@@ -1,6 +1,6 @@
 ---
 bind_zones:
-  - name: 202.85.10.in-addr.arpa.
+  - name: 202.85.10.in-addr.arpa
     primaries:
       - 10.85.202.120
   - name: dns1.lab
