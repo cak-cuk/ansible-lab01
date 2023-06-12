@@ -1,5 +1,15 @@
 ---
 bind_zones:
+  - name: 202.85.10.in-addr.arpa.
+    primaries:
+      - 10.85.202.120
+    type: primary
+    allow_update:
+      - "key rndc-key"
+      - "key dnslab01"
+    name_servers:
+      - dns-01-lab.dns1.lab.
+      - dns-02-lab.dns1.lab.
   - name: dns1.lab
     primaries:
       - 10.85.202.120
@@ -7,7 +17,6 @@ bind_zones:
     allow_update:
       - "key rndc-key"
       - "key dnslab01"
-      - "key jenkins-key"
     name_servers:
       - dns-01-lab.dns1.lab.
       - dns-02-lab.dns1.lab.
