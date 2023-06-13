@@ -21,3 +21,43 @@ bind_zones:
         ip: 10.85.202.120
       - name: dns-02-lab
         ip: 10.85.202.121
+      - name: test-subdomain-1
+        ip: 100.64.2.1
+      - name: test-subdomain-2
+        ip: 100.64.2.2
+      - name: test-subdomain-3
+        ip: 100.64.2.3
+      - name: test-subdomain-4
+        ip: 100.64.2.4
+      - name: test-subdomain-5
+        ip: 100.64.2.5
+      - name: test-subdomain-6
+        ip: 100.64.2.6
+      - name: test-subdomain-7
+        ip: 100.64.2.7
+      - name: test-subdomain-8
+        ip: 100.64.2.8
+      - name: test-subdomain-9
+        ip: 100.64.2.9
+      - name: test-subdomain-10
+        ip: 100.64.2.10
+      - name: test-subdomain-11
+        ip: 100.64.2.11
+      - name: test-subdomain-12
+        ip: 100.64.2.12
+      - name: test-subdomain-13
+        ip: 100.64.2.13
+      - name: test-subdomain-14
+        ip: 100.64.2.14
+      - name: test-subdomain-15
+        ip: 100.64.2.15
+      - name: test-subdomain-16
+        ip: 100.64.2.16
+      - name: test-subdomain-17
+        ip: 100.64.2.17
+      - name: test-subdomain-18
+        ip: 100.64.2.18
+      - name: test-subdomain-19
+        ip: 100.64.2.19
+      - name: test-subdomain-20
+        ip: 100.64.2.20
