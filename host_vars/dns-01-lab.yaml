@@ -65,7 +65,7 @@ bind_zones:
         ip: 100.64.1.19
       - name: test-subdomain-20
         ip: 100.64.1.20
-        
+
   - name: dns2.lab
     primaries:
       - 10.85.202.121
