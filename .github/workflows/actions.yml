@@ -33,19 +33,19 @@ jobs:
       - name: Checkout the codebase
         uses: actions/checkout@v3
 
-      - name: simulate playbook
+      - name: Install requirements
         run: |
           . $GITHUB_WORKSPACE/scripts/common.sh
-          source $HOME/.bashrc
+          . $HOME/.bashrc
           export PATH=$HOME/.local/bin:$PATH
           pip3 install --user --upgrade pip
           pip3 install --user --upgrade -r requirements/pip3.txt
           ansible-galaxy role remove udienz.bind
           ansible-galaxy install -f -r requirements/galaxy.yaml
 
-      - name: ansible vault
+      - name: Save Ansible Vault
         run: |
           echo ${{ secrets.ANSIBLE_VAULT_PASSWORD }} > $GITHUB_WORKSPACE/.vault_pass
-      - name: ansible test login
+      - name: Ansible test login
         run: |
           ansible -i inventory.yaml --vault-password-file $GITHUB_WORKSPACE/.vault_pass -m ping all
