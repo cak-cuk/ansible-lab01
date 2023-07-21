@@ -1,0 +1,51 @@
+---
+name: CI/CD
+on:
+  pull_request:
+    branches:
+      - main
+    paths-ignore:
+      - '**.md'
+      - '**.txt'
+      - '**.sh'
+  schedule:
+    - cron: '0 12 * * 0'
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '**.md'
+      - '**.txt'
+      - '**.sh'
+
+jobs:
+  test_and_build:
+    runs-on: [ self-hosted ]
+    name: Code check build image
+    container:
+      image: udienz/docker-ansible:ubuntu2204
+    steps:
+      - uses: AutoModality/action-clean@v1
+      - name: Change ownership
+        run: |
+          sudo chown -R $(whoami):$(whoami) $GITHUB_WORKSPACE
+
+      - name: Checkout the codebase
+        uses: actions/checkout@v3
+
+      - name: simulate playbook
+        run: |
+          . $GITHUB_WORKSPACE/scripts/common.sh
+          source $HOME/.bashrc
+          export PATH=$HOME/.local/bin:$PATH
+          pip3 install --user --upgrade pip
+          pip3 install --user --upgrade -r requirements/pip3.txt
+          ansible-galaxy role remove udienz.bind
+          ansible-galaxy install -f -r requirements/galaxy.yaml
+
+      - name: ansible vault
+        run: |
+          echo ${{ secrets.ANSIBLE_VAULT_PASSWORD }} > $GITHUB_WORKSPACE/.vault_pass
+      - name: ansible test login
+        run: |
+          ansible -i inventory.yaml --vault-password-file $GITHUB_WORKSPACE/.vault_pass -m ping all
