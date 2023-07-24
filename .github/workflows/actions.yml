@@ -37,6 +37,8 @@ jobs:
         uses: dawidd6/action-ansible-playbook@v2
         with:
           playbook: playbook.yaml
+          vault_password: ${{secrets.ANSIBLE_VAULT_PASSWORD}}
+          requirements: requirements/galaxy.yaml
           options: |
             --inventory inventory.yaml
             --check
