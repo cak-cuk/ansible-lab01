@@ -1,0 +1,51 @@
+---
+name: CI/CD
+on:
+  pull_request:
+    branches:
+      - main
+    paths-ignore:
+      - '**.md'
+      - '**.txt'
+      - '**.sh'
+  schedule:
+    - cron: '0 12 * * 0'
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '**.md'
+      - '**.txt'
+      - '**.sh'
+
+jobs:
+  run_ci:
+    runs-on: [ self-hosted ]
+    name: Code check build image
+    container:
+      image: udienz/docker-ansible:ubuntu2204
+    steps:
+      - uses: AutoModality/action-clean@v1
+
+      - name: Checkout the codebase
+        uses: actions/checkout@v3
+
+      - name: Install sshpass
+        run: |
+          apt update
+          apt install -y sshpass
+
+      - name: Run playbook
+        uses: dawidd6/action-ansible-playbook@v2
+        env:
+          ANSIBLE_HOST_KEY_CHECKING: False
+        with:
+          playbook: playbook.yaml
+          vault_password: ${{secrets.ANSIBLE_VAULT_PASSWORD}}
+          requirements: requirements/galaxy.yaml
+          key: ${{ secrets.SSH_PRIVATE_ECDSA }}
+          options: |
+            --inventory inventory.yaml
+            --check
+            --diff
+            --ssh-extra-args "-o StrictHostKeyChecking=no"
