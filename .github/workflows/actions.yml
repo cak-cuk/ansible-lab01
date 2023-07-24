@@ -36,7 +36,7 @@ jobs:
       - name: Install requirements
         run: |
           . $GITHUB_WORKSPACE/scripts/common.sh
-          . $HOME/.bashrc
+          export
           export PATH=$HOME/.local/bin:$PATH
           pip3 install --user --upgrade pip
           pip3 install --user --upgrade -r requirements/pip3.txt
