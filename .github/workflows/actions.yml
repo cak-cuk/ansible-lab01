@@ -33,19 +33,11 @@ jobs:
       - name: Checkout the codebase
         uses: actions/checkout@v3
 
-      - name: Install requirements
-        run: |
-          . $GITHUB_WORKSPACE/scripts/common.sh
-          export
-          export PATH=$HOME/.local/bin:$PATH
-          pip3 install --user --upgrade pip
-          pip3 install --user --upgrade -r requirements/pip3.txt
-          ansible-galaxy role remove udienz.bind
-          ansible-galaxy install -f -r requirements/galaxy.yaml
-
-      - name: Save Ansible Vault
-        run: |
-          echo ${{ secrets.ANSIBLE_VAULT_PASSWORD }} > $GITHUB_WORKSPACE/.vault_pass
-      - name: Ansible test login
-        run: |
-          ansible -i inventory.yaml --vault-password-file $GITHUB_WORKSPACE/.vault_pass -m ping all
+      - name: Run playbook
+        uses: dawidd6/action-ansible-playbook@v2
+        with:
+          playbook: playbook.yaml
+          options: |
+            --inventory inventory.yaml
+            --check
+            --diff
