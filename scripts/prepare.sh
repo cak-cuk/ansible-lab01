@@ -1,6 +1,7 @@
 #!/bin/bash
 
 . ${WORKSPACE}/scripts/common.sh
+export
 source /home/jenkins/.bashrc
 export PATH=$HOME/.local/bin:$PATH
 pip3 install --user --upgrade pip
