@@ -45,3 +45,4 @@ jobs:
             --inventory inventory.yaml
             --check
             --diff
+            --ssh-extra-args "-o StrictHostKeyChecking=no"
