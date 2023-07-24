@@ -19,19 +19,21 @@ on:
       - '**.sh'
 
 jobs:
-  test_and_build:
+  run_ci:
     runs-on: [ self-hosted ]
     name: Code check build image
     container:
       image: udienz/docker-ansible:ubuntu2204
     steps:
       - uses: AutoModality/action-clean@v1
-      - name: Change ownership
-        run: |
-          sudo chown -R $(whoami):$(whoami) $GITHUB_WORKSPACE
-
+      
       - name: Checkout the codebase
         uses: actions/checkout@v3
+        
+      - name: Install sshpass
+        run: |
+        apt update
+        apt install -y sshpass
 
       - name: Run playbook
         uses: dawidd6/action-ansible-playbook@v2
