@@ -43,6 +43,7 @@ jobs:
           playbook: playbook.yaml
           vault_password: ${{secrets.ANSIBLE_VAULT_PASSWORD}}
           requirements: requirements/galaxy.yaml
+          key: ${{ secrets.SSH_PRIVATE_ECDSA }}
           options: |
             --inventory inventory.yaml
             --check
