@@ -37,6 +37,8 @@ jobs:
 
       - name: Run playbook
         uses: dawidd6/action-ansible-playbook@v2
+        env:
+          ANSIBLE_HOST_KEY_CHECKING: False
         with:
           playbook: playbook.yaml
           vault_password: ${{secrets.ANSIBLE_VAULT_PASSWORD}}
