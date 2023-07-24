@@ -32,8 +32,8 @@ jobs:
 
       - name: Install sshpass
         run: |
-        apt update
-        apt install -y sshpass
+          apt update
+          apt install -y sshpass
 
       - name: Run playbook
         uses: dawidd6/action-ansible-playbook@v2
