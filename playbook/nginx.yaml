@@ -1,0 +1,49 @@
+---
+- name: Converge LB Staging
+  hosts: group_loadbalancer_1
+  become: true
+  tasks:
+    - name: Install NGINX
+      ansible.builtin.include_role:
+        name: nginxinc.nginx
+      vars:
+        nginx_modules:
+          - njs
+    - name: Getting status for include config directory for nginx
+      ansible.builtin.stat:
+        path: /etc/nginx/custom.d
+      register: customconfigdir
+      notify: (Handler) Restart NGINX
+
+    - name: Create directory
+      ansible.builtin.file:
+        path: /etc/nginx/custom.d
+        state: directory
+        mode: '0755'
+        owner: root
+        group: root
+      when: not customconfigdir.stat.exists
+
+    - name: Download list Cloudflare allow lisi
+      ansible.builtin.get_url:
+        url: https://gist.githubusercontent.com/udienz/a11b657695e25b0b5b588c6c8b46c13c/raw/7b0f0580164865b37c555d910c43de240fd7198d/cf-nginx-allow.conf
+        dest: /etc/nginx/custom.d/cf-allow-ips.conf
+        mode: '0644'
+
+    - name: Download list Cloudflare mapping ip
+      ansible.builtin.get_url:
+        url: https://gist.githubusercontent.com/udienz/a11b657695e25b0b5b588c6c8b46c13c/raw/7b0f0580164865b37c555d910c43de240fd7198d/cf-restore-ip.conf
+        dest: /etc/nginx/custom.d/cf-restore-ips.conf
+        mode: '0644'
+
+    - name: Copy dhparams
+      ansible.builtin.copy:
+        src: ../files/dhparams.pem
+        dest: /etc/ssl/
+        owner: root
+        group: root
+        mode: '0644'
+
+    - name: Configure NGINX
+      ansible.builtin.include_role:
+        name: nginxinc.nginx_config
