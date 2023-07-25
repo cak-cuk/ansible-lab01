@@ -1,3 +1,7 @@
 ---
 roles:
-    - name: udienz.bind
+  - name: nginxinc.nginx
+  - name: nginxinc.nginx_config
+  - name: udienz.bind
+collections:
+  - name: nginxinc.nginx_core
