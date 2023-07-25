@@ -37,6 +37,7 @@ jobs:
 
       - name: Simulate playbook
         uses: dawidd6/action-ansible-playbook@v2
+        if: github.event_name == 'pull_request'
         env:
           ANSIBLE_HOST_KEY_CHECKING: False
         with:
@@ -61,3 +62,4 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_ECDSA }}
           options: |
             --inventory inventory.yaml
+            --diff
