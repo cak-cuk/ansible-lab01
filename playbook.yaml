@@ -7,9 +7,5 @@
       ansible.builtin.import_tasks:
         file: tasks/init.yaml
 
-- name: Converge
-  hosts: all
-  gather_facts: true
-  become: true
-  roles:
-    - udienz.bind
+- ansible.builtin.import_playbook: playbook/dns.yaml
+- ansible.builtin.import_playbook: playbook/nginx.yaml

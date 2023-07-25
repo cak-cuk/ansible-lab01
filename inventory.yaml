@@ -5,3 +5,7 @@ dns_lab01:
       ansible_host: 10.85.202.120
     dns-02-lab:
       ansible_host: 10.85.202.121
+group_loadbalancer_1:
+  hosts:
+    lb-staging:
+      ansible_host: 10.85.202.106

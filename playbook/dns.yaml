@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: dns_lab01
+  gather_facts: true
+  become: true
+  roles:
+    - udienz.bind
