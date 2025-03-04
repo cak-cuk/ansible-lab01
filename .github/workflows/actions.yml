@@ -20,7 +20,7 @@ on:
 
 jobs:
   run_ci:
-    runs-on: [ self-hosted ]
+    runs-on: [ ubuntu ]
     name: Code check build image
     container:
       image: udienz/docker-ansible:ubuntu2204
