@@ -28,7 +28,7 @@ jobs:
       - uses: AutoModality/action-clean@v1
 
       - name: Checkout the codebase
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Install sshpass
         run: |
@@ -36,8 +36,8 @@ jobs:
           apt install -y sshpass
 
       - name: Simulate playbook
-        uses: dawidd6/action-ansible-playbook@v2
         if: github.event_name == 'pull_request'
+        uses: dawidd6/action-ansible-playbook@v3
         env:
           ANSIBLE_HOST_KEY_CHECKING: False
         with:
@@ -51,7 +51,7 @@ jobs:
             --diff
 
       - name: Run playbook
-        uses: dawidd6/action-ansible-playbook@v2
+        uses: dawidd6/action-ansible-playbook@v3
         if: github.ref == 'refs/heads/main'
         env:
           ANSIBLE_HOST_KEY_CHECKING: False
