@@ -36,6 +36,7 @@ jobs:
           apt install -y sshpass
 
       - name: Simulate playbook
+        if: github.event_name == 'pull_request'
         uses: dawidd6/action-ansible-playbook@v3
         env:
           ANSIBLE_HOST_KEY_CHECKING: False
@@ -61,3 +62,4 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_ECDSA }}
           options: |
             --inventory inventory.yaml
+            --diff
