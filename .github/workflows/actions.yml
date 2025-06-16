@@ -36,7 +36,7 @@ jobs:
           apt install -y sshpass
 
       - name: Simulate playbook
-        uses: dawidd6/action-ansible-playbook@v3
+        uses: dawidd6/action-ansible-playbook@v4
         env:
           ANSIBLE_HOST_KEY_CHECKING: False
         with:
@@ -50,7 +50,7 @@ jobs:
             --diff
 
       - name: Run playbook
-        uses: dawidd6/action-ansible-playbook@v3
+        uses: dawidd6/action-ansible-playbook@v4
         if: github.ref == 'refs/heads/main'
         env:
           ANSIBLE_HOST_KEY_CHECKING: False
