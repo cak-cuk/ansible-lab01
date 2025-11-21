@@ -28,7 +28,7 @@ jobs:
       - uses: AutoModality/action-clean@v1
 
       - name: Checkout the codebase
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Install sshpass
         run: |
